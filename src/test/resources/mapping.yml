@@ -1,0 +1,9 @@
+mapping:
+  - csv-col: 'data1'
+    db-col: 'DATA'
+    transformer: 'com.dulanja33.dcl.transformers.StringTransformer'
+  - csv-col: 'data2'
+    db-col: 'value'
+    transformer: 'com.dulanja33.dcl.transformers.IntegerTransformer'
+check-query: 'select count(*) from TEST where DATA = ${data}'
+insert-query: "insert into TEST(DATA,value) values ${(${data},${data2})}"

@@ -1,0 +1,12 @@
+mapping:
+  - csv-col: 'data'
+    db-col: 'DATA'
+    transformer: 'com.dulanja33.dcl.transformers.StringTransformer'
+  - csv-col: 'value'
+    db-col: 'value'
+    transformer: 'com.dulanja33.dcl.transformers.IntegerTransformer'
+  - csv-col: 'date'
+    db-col: 'date'
+    transformer: 'com.dulanja33.dcl.transformers.StringTransformer'
+check-query: 'select count(*) from TEST where DATA = ${data}'
+insert-query: "insert into TEST(DATA,value,date) values ${(${data},${value},str_to_date(${date},'%d.%m.%y'))}"
